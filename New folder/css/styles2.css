@@ -978,6 +978,48 @@ transition: all .8s cubic-bezier(0, 0, 0.91, 0.37) .9s;
     .cont-butt{
       width: 100%;
     }
+
+    .icon-m{
+      display:block;
+      position:absolute;
+      right:5px;
+      top:25px;
+    }
+  
+  .header-icon,.header-social{
+    display:none;
+  }
+  .header-hide{
+    display:none;
+  }
+  
+  .bodytrans{
+    margin-left: -350px;
+  }
+  
+  .main{
+    margin-bottom: 0px;
+   }
+  
+  .footer-layout{
+    position: relative;
+    z-index: 10;
+   }
+   #footer-wrap{
+     margin-top: 0;
+   }
+  
+   .content-f{
+    width: 100%;
+   }
+  
+   .content-f .links{
+     justify-content: flex-end;
+   }
+  
+   .footer-widget{
+    position: relative;
+   }
 }
 
 
