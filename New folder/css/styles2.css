@@ -1031,6 +1031,7 @@ z-index: 99999;
   cursor: pointer;
   margin: 0 1rem;
   z-index: 400;
+  color: #AD8C11;
 }
 
 .right-arrow{
@@ -1040,6 +1041,8 @@ z-index: 99999;
   cursor: pointer;
   margin: 0 1rem;
   z-index:400;
+  color: #AD8C11;
+
 
 }
 
@@ -1277,11 +1280,18 @@ overflow: hidden;
     color:#fff;
   }
 
+  .sliding-section,.slidingimag{
+    width: 95%;
+  }
+
 }
 @media (max-width:750px){
 
   .picone-wrap{
     width: 50%;
+     padding:5px;
+
+
   }
 
   .icon-m{
@@ -1331,6 +1341,14 @@ overflow: hidden;
 
 @media (max-width:420px){
 
+  .sliding-section,.slidingimag{
+    width: 100%;
+  }
+
+  .sliderimage{
+    min-height: 350px;
+  }
+
   .navgtion{
     margin-bottom: 2.5rem;
     gap: 0;
@@ -1346,6 +1364,9 @@ overflow: hidden;
     width: 100%;
     transform: scaleY(1.2);
     margin-bottom: 42px;
+    padding: 0;
+    border-bottom: 7px solid #AD8C11;
+
   }
 
   .icon-m{
