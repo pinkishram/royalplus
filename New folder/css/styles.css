@@ -1029,34 +1029,6 @@ transition: all .8s cubic-bezier(0, 0, 0.91, 0.37) .9s;
   .g-s-p{
     width: 360px;
   }
-  .drag-tittle-h {
-    font-size: 36px;
-    text-align: center;
-  }
-  .fistt-drag-h{
-    font-size: 20px;
-    text-align: center;
-  }
-
-  .drag-tittle-clip{
-    top:42%;
-  }
-
-  .opacity-div{
-    top:68%;
-    left: calc(50% - 120px);
-    margin-top: 12px;
-  }
-
-  .opacity-link{
-    font-size: 12px;
-  }
-
-  .drag-tittle-h {
-    font-weight: 400;
-    font-size: 60px;
-}
-
 .work-p h1,.work-p p,.work-content{
   text-align: center;
 }
