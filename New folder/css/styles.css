@@ -1021,6 +1021,7 @@ transition: all .8s cubic-bezier(0, 0, 0.91, 0.37) .9s;
 
 
 @media(max-width:420px){
+  
   .image-work{
     min-height: 350px;
   }
