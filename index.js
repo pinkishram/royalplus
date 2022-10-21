@@ -43,11 +43,11 @@ let scrollamount = 100;
 
 // varibales////
 
-window.onload = function () {
+window.onpageshow = function () {
   firstdrag.style.transform = "translatey(" + 0 + "px)";
   dragtittle.style.transform = "translatey(" + 0 + "px)";
-  const myTimeout = setTimeout(myGreeting, 2000);
-  const myTimeout2 = setTimeout(myGreeting2, 3000);
+  setTimeout(myGreeting, 2000);
+  setTimeout(myGreeting2, 3000);
 
   // document.querySelector(".item100").classList.add("clip-active");
 };
