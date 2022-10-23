@@ -1,7 +1,3 @@
-let label = document.querySelectorAll(".indector-css");
-let present = document.querySelector(".present-items");
-const image_title = document.querySelector(".i-t-one");
-
 const bodyhide = document.querySelector(".body-hide");
 const header_icon = document.querySelector(".icon-hover");
 const margin = document.querySelector(".genral-wrap");
@@ -29,38 +25,76 @@ const colorarray = Array.from(color);
 const spancolor = document.querySelectorAll(".back-jsspan");
 const spanarray = Array.from(spancolor);
 
-const dragtittle = document.querySelector(".drag-tittle");
-const firstdrag = document.querySelector(".fistt-drag");
+const clipitem = document.querySelectorAll(".items-clip");
+const clip_indc = document.querySelectorAll(".indector-clip");
 
-const link1 = document.querySelector(".link1-div");
-const link2 = document.querySelector(".link2-div");
+const dragtittleclip = document.querySelector(".drag-tittle-clip");
+const firstdragclip = document.querySelector(".fistt-drag-clip");
+
+const opacityDiv = document.querySelector(".opacity-div");
+
+const link1clip = document.querySelector(".link1-clip");
+const link2clip = document.querySelector(".link2-clip");
+
+const testmSlider = document.querySelectorAll(".testmon-slider");
 
 const foot = document.querySelector(".footer-layout");
+const assurance = document.querySelector(".work-wrap");
+const contact = document.querySelector(".cont-form");
 
-let current = 0;
-let maxscroll = 900;
-let scrollamount = 100;
+const royal_n = document.querySelector(".n-royal");
+const years = document.querySelectorAll(".count-p");
 
-// varibales////
+let wid = document.querySelector(".testmon-slide").clientWidth;
 
-window.onpageshow = function () {
-  firstdrag.style.transform = "translatey(" + 0 + "px)";
-  dragtittle.style.transform = "translatey(" + 0 + "px)";
-  setTimeout(myGreeting, 2000);
-  setTimeout(myGreeting2, 3000);
+let js_wid = (document.querySelector(".js-sliding").style.width = wid * 8 + "px");
 
-  // document.querySelector(".item100").classList.add("clip-active");
+t = 0;
+current = 0;
+let windowWidth = window.innerWidth;
+
+for (let i = 0; i < testmSlider.length; i++) {
+  testmSlider[i].style.width = wid + "px";
+}
+
+// starting///////////////
+window.addEventListener("resize", go);
+
+window.onload = function () {
+  firstdragclip.style.transform = "translatey(" + 0 + "px)";
+  dragtittleclip.style.transform = "translatey(" + 0 + "px)";
+  const myTimeoutclip = setTimeout(myGreetingclip, 2000);
+  const myTimeout2clip = setTimeout(myGreetingclip2, 3000);
 };
 
-function myGreeting() {
-  link1.style.display = "inline-block";
+function myGreetingclip() {
+  link1clip.style.display = "inline-block";
 }
-function myGreeting2() {
-  link2.style.display = "inline-block";
+function myGreetingclip2() {
+  link2clip.style.display = "inline-block";
 }
 
-// slider for the body////////
+// arrow hover////
+document.querySelector(".left-arrow-clip").addEventListener("mouseover", function () {
+  document.querySelector(".fass-clip").style.opacity = "1";
+});
+document.querySelector(".left-arrow-clip").addEventListener("mouseout", function () {
+  document.querySelector(".fass-clip").style.opacity = "0";
+});
+document.querySelector(".right-arrow-clip").addEventListener("mouseover", function () {
+  if (windowWidth < 420) {
+    document.querySelectorAll(".fass-clip")[1].style.opacity = "0";
+  }
+  document.querySelectorAll(".fass-clip")[1].style.opacity = "1";
+});
+document.querySelector(".right-arrow-clip").addEventListener("mouseout", function () {
+  document.querySelectorAll(".fass-clip")[1].style.opacity = "0";
+});
+
+// arrow hover//// slider for the body////////
+
 header_icon.addEventListener("click", parkshow);
+
 function parkshow() {
   bodyhide.style.zIndex = "9999";
   prkhiddenbar.classList.add("park-hidden");
@@ -87,14 +121,16 @@ function mobileshow() {
   bodyhide.style.zIndex = "999";
   mhiddenbar.classList.add("park-hidden");
   margin.classList.add("bodytrans");
-  foot.classList.add("bodytrans");
 
   headersSlider.classList.add("bodytrans");
   mobile_s2.classList.add("mobilespan2");
   mobile_s.classList.add("mobilespan");
+
+  foot.classList.add("bodytrans");
 }
 
 // slider for the body////////
+
 window.onscroll = function () {
   if (window.scrollY >= 250) {
     headersSlider.classList.add("header-scroll");
@@ -124,7 +160,177 @@ window.onscroll = function () {
       span.classList.remove("color-s");
     });
   }
+
+  back_position();
+  present_position();
+
+  // assuranse itemsection opacity ////
+
+  if (window.scrollY >= assurance.offsetTop - 100) {
+    const assurStart = document.querySelectorAll(".royal_n_op");
+    for (let i = 0; i < assurStart.length; i++) {
+      assurStart[i].classList.add("opacityn");
+    }
+  }
+
+  const combinationoff = document.querySelector(".combination");
+  if (window.scrollY >= combinationoff.offsetTop - 450) {
+    const combinationDiv = document.querySelectorAll(".c-opacity");
+    for (let i = 0; i < combinationDiv.length; i++) {
+      combinationDiv[i].classList.add("opacitys");
+    }
+  }
+
+  const solutionoff = document.querySelector(".solution");
+  if (window.scrollY >= solutionoff.offsetTop - 500) {
+    const solutionDiv = document.querySelectorAll(".sol-opacity");
+    for (let i = 0; i < solutionDiv.length; i++) {
+      solutionDiv[i].classList.add("opacitys");
+    }
+  }
+
+  const warrantoff = document.querySelector(".warrant");
+  if (window.scrollY >= warrantoff.offsetTop - 550) {
+    const warrantDiv = document.querySelectorAll(".war-opacity");
+    for (let i = 0; i < warrantDiv.length; i++) {
+      warrantDiv[i].classList.add("opacitys");
+    }
+  }
+  const standeroff = document.querySelector(".standerd");
+  if (window.scrollY >= standeroff.offsetTop - 600) {
+    const standerDiv = document.querySelectorAll(".sta-opacity");
+    for (let i = 0; i < standerDiv.length; i++) {
+      standerDiv[i].classList.add("opacitys");
+    }
+  }
+
+  const degtilDesignoff = document.querySelector(".degtil-design");
+  if (window.scrollY >= degtilDesignoff.offsetTop - 650) {
+    const designDiv = document.querySelectorAll(".des-opacity");
+    for (let i = 0; i < designDiv.length; i++) {
+      designDiv[i].classList.add("opacitys");
+    }
+  }
+
+  const deliveryoff = document.querySelector(".delivery");
+  if (window.scrollY >= deliveryoff.offsetTop - 700) {
+    const deliveryDiv = document.querySelectorAll(".del-opacity");
+    for (let i = 0; i < deliveryDiv.length; i++) {
+      deliveryDiv[i].classList.add("opacitys");
+    }
+  }
+
+  // assuranse itemsection opacity ////
+
+  // numbers section opacity ////
+
+  const byNumoff = document.querySelector(".n-royal");
+  if (window.scrollY >= byNumoff.offsetTop - 500) {
+    const byNumDiv = document.querySelectorAll(".royal_num_op");
+    for (let i = 0; i < byNumDiv.length; i++) {
+      byNumDiv[i].classList.add("opacitys");
+    }
+  }
+  // numbers section opacity ////
+
+  //  numbers count//////
+
+  if (window.scrollY >= byNumoff.offsetTop - 400) {
+    years.forEach((item) => {
+      function update() {
+        let end = +item.getAttribute("data-numbers");
+        let count = +item.innerText;
+
+        if (count < end) {
+          item.innerText++;
+          setTimeout(update, 1000);
+        } else {
+          item.innerText = end;
+        }
+      }
+      update();
+    });
+
+    //  numbers count//////
+
+    function update2() {
+      let end2 = +document.querySelector(".count-pp").getAttribute("data-number");
+      let count2 = +document.querySelector(".count-pp").innerText;
+
+      if (count2 < end2) {
+        document.querySelector(".count-pp").innerText++;
+
+        setTimeout(update2, 40);
+      } else {
+        document.querySelector(".count-pp").innerText = end2;
+      }
+    }
+
+    update2();
+  }
+  //  numbers count//////
+
+  // we care section opc//////////
+
+  const rCare = document.querySelector(".r-care-dad");
+  if (window.scrollY >= rCare.offsetTop - 470) {
+    const rCareDiv = document.querySelectorAll(".royal_care_op");
+    for (let i = 0; i < rCareDiv.length; i++) {
+      rCareDiv[i].classList.add("opacitys");
+    }
+  }
+
+  const contDad = document.querySelector(".cont-r-dad");
+  if (window.scrollY >= contDad.offsetTop - 470) {
+    const contactDiv = document.querySelectorAll(".royal_contact_op");
+    for (let i = 0; i < contactDiv.length; i++) {
+      contactDiv[i].classList.add("opacitys");
+    }
+  }
 };
+// input label////////////
+
+let input1 = document.querySelectorAll(".inp-n");
+let label = document.querySelector(".labe-n");
+let label2 = document.querySelector(".labe-e");
+let area = document.querySelector(".area-text");
+let label3 = document.querySelectorAll(".labe-n");
+let input = document.querySelectorAll(".inp-n");
+
+function focus1() {
+  label.classList.add("mystyle");
+  input1[0].classList.add("fosusstyle");
+}
+
+function focus2() {
+  label2.classList.add("mystyle");
+  input1[1].classList.add("fosusstyle");
+}
+
+function focus3() {
+  area.classList.add("fosusstyle");
+}
+
+function losefocus() {
+  for (let i = 0; i < input.length; i++) {
+    let i_amount = input[i].value.length;
+    let areaamount = area.value.length;
+
+    if (i_amount > 0) {
+      label3[i].classList.add("mystyle");
+      input1[i].classList.add("fosusstyle");
+    }
+
+    if (areaamount > 0) return area.classList.add("fosusstyle");
+    else {
+      label3[i].classList.remove("mystyle");
+      input1[i].classList.remove("fosusstyle");
+      area.classList.remove("fosusstyle");
+    }
+  }
+}
+
+// input label////////////
 
 // slider span and drag/////////////////////////
 
@@ -156,584 +362,462 @@ function spanunhover(v) {
   }
 }
 
-// slider for the body////////
+// slider span and drag/////////////////////////
 
-function bottomscrollf() {
-  const el = document.getElementById("gallary-scroll");
-  el.scrollIntoView({ behavior: "smooth", block: "start" });
+function bottomscroll() {
+  window.scrollTo(0, assurance.offsetTop + 400);
+}
+function bottomscroll2() {
+  window.scrollTo(0, contact.offsetTop - 300);
 }
 
-function set() {
-  for (var i = 0; i < label.length; i++) {
-    document.querySelectorAll(".indector-css")[i].classList.remove("active");
+// function pilot indctor clip/////////
+
+const itemClip = document.querySelectorAll(".items-clip");
+
+function present_position() {
+  let pres = window.scrollY / 2.5;
+
+  if (pres >= 400) {
+    pres = 400;
   }
-  // document.querySelector(".present-items").style.transform="translatex("+ -10 +
-  // "%)";
+  for (let i = 0; i < itemClip.length; i++) {
+    itemClip[i].style.bottom = -pres + "px";
+  }
+}
+//   $(".items-clip").css("bottom", -pres);
+
+function setclip() {
+  for (var i = 0; i < clipitem.length; i++) {
+    clipitem[i].classList.remove("clip-active");
+  }
 }
 
-// transform slider////////////
+function setindc() {
+  for (var i = 0; i < clipitem.length; i++) {
+    clip_indc[i].classList.remove("active-clip");
+  }
+}
 
-function pilot(n) {
-  set();
+//  indector pilot clip//////////
 
-  label[n - 1].classList.add("active");
+function pilott(c) {
+  setclip();
+  clipitem[c - 1].classList.add("clip-active");
 
-  if (n >= 2) {
-    firstdrag.style.transform = "translatey(" + -500 + "px)";
-    dragtittle.style.transform = "translatey(" + 4000 + "px)";
-    link1.style.display = "none";
-    link2.style.display = "none";
+  setindc();
+  clip_indc[c - 1].classList.add("active-clip");
+
+  if (c >= 2) {
+    firstdragclip.style.transform = "translatey(" + -500 + "px)";
+    dragtittleclip.style.transform = "translatey(" + 4000 + "px)";
+    opacityDiv.style.display = "none";
+    link1clip.style.display = "none";
+    link2clip.style.display = "none";
   }
 
-  if (n == 1) {
+  if (c == 1) {
+    document.querySelectorAll(".fass-clip")[0].textContent = "1/7";
+    document.querySelectorAll(".fass-clip")[1].textContent = "1/7";
+    firstdragclip.style.transform = "translatey(" + 0 + "px)";
+    dragtittleclip.style.transform = "translatey(" + 0 + "px)";
+    opacityDiv.style.display = "block";
+    setTimeout(myGreetingclip, 1000);
+    setTimeout(myGreetingclip2, 1300);
+    t = 0;
+  }
+
+  if (c == 2) {
+    document.querySelectorAll(".fass-clip")[0].textContent = "2/7";
+    document.querySelectorAll(".fass-clip")[1].textContent = "2/7";
+    t = 1;
+  }
+
+  if (c == 3) {
+    document.querySelectorAll(".fass-clip")[0].textContent = "3/7";
+    document.querySelectorAll(".fass-clip")[1].textContent = "3/7";
+    t = 2;
+  }
+
+  if (c == 4) {
+    document.querySelectorAll(".fass-clip")[0].textContent = "4/7";
+    document.querySelectorAll(".fass-clip")[1].textContent = "4/7";
+    t = 3;
+  }
+
+  if (c == 5) {
+    document.querySelectorAll(".fass-clip")[0].textContent = "5/7";
+    document.querySelectorAll(".fass-clip")[1].textContent = "5/7";
+    t = 4;
+  }
+
+  if (c == 6) {
+    document.querySelectorAll(".fass-clip")[0].textContent = "6/7";
+    document.querySelectorAll(".fass-clip")[1].textContent = "6/7";
+    firstdragclip.style.transform = "translatey(" + 0 + "px)";
+    dragtittleclip.style.transform = "translatey(" + 0 + "px)";
+    opacityDiv.style.display = "block";
+    setTimeout(myGreetingclip, 1000);
+    setTimeout(myGreetingclip2, 1300);
+    t = 5;
+  }
+
+  if (c == 7) {
+    document.querySelectorAll(".fass-clip")[0].textContent = "7/7";
+    document.querySelectorAll(".fass-clip")[1].textContent = "7/7";
+    t = 6;
+  }
+}
+
+//  indector pilot clip//////////
+
+const myintervalthree = setInterval(mytimerthree, 12000);
+function mytimerthree() {
+  pilotforwardclip();
+}
+
+// function pilot forward clip////////////
+
+function pilotforwardclip() {
+  if (t >= 6) {
+    t = -1;
+  }
+
+  setclip();
+  t++;
+  clipitem[t].classList.add("clip-active");
+
+  if (t >= 1) {
+    firstdragclip.style.transform = "translatey(" + -500 + "px)";
+    dragtittleclip.style.transform = "translatey(" + 12000 + "px)";
+    opacityDiv.style.display = "none";
+    link1clip.style.display = "none";
+    link2clip.style.display = "none";
+  }
+
+  if (t == 0) {
+    document.querySelectorAll(".fass-clip")[0].textContent = "1/7";
+    document.querySelectorAll(".fass-clip")[1].textContent = "1/7";
+    setindc();
+    clip_indc[0].classList.add("active-clip");
+    firstdragclip.style.transform = "translatey(" + 0 + "px)";
+    dragtittleclip.style.transform = "translatey(" + 0 + "px)";
+    opacityDiv.style.display = "block";
+    setTimeout(myGreetingclip, 1000);
+    setTimeout(myGreetingclip2, 1300);
+  }
+
+  if (t == 1) {
+    document.querySelectorAll(".fass-clip")[0].textContent = "2/7";
+    document.querySelectorAll(".fass-clip")[1].textContent = "2/7";
+    setindc();
+    clip_indc[1].classList.add("active-clip");
+  }
+
+  if (t == 2) {
+    document.querySelectorAll(".fass-clip")[0].textContent = "3/7";
+    document.querySelectorAll(".fass-clip")[1].textContent = "3/7";
+    setindc();
+    clip_indc[2].classList.add("active-clip");
+  }
+
+  if (t == 3) {
+    document.querySelectorAll(".fass-clip")[0].textContent = "4/7";
+    document.querySelectorAll(".fass-clip")[1].textContent = "4/7";
+    setindc();
+    clip_indc[3].classList.add("active-clip");
+  }
+
+  if (t == 4) {
+    document.querySelectorAll(".fass-clip")[0].textContent = "5/7";
+    document.querySelectorAll(".fass-clip")[1].textContent = "5/7";
+    setindc();
+    clip_indc[4].classList.add("active-clip");
+  }
+
+  if (t == 5) {
+    document.querySelectorAll(".fass-clip")[0].textContent = "6/7";
+    document.querySelectorAll(".fass-clip")[1].textContent = "6/7";
+    setindc();
+    clip_indc[5].classList.add("active-clip");
+    firstdragclip.style.transform = "translatey(" + 0 + "px)";
+    dragtittleclip.style.transform = "translatey(" + 0 + "px)";
+    opacityDiv.style.display = "block";
+    setTimeout(myGreetingclip, 1000);
+    setTimeout(myGreetingclip2, 1300);
+  }
+
+  if (t == 6) {
+    document.querySelectorAll(".fass-clip")[0].textContent = "7/7";
+    document.querySelectorAll(".fass-clip")[1].textContent = "7/7";
+    setindc();
+    clip_indc[6].classList.add("active-clip");
+  }
+}
+
+// function pilot forward clip//////////// function pilot backword
+// clip////////////
+function pilotbackclip() {
+  if (t <= 0) {
+    t = 7;
+  }
+
+  setclip();
+  t--;
+  clipitem[t].classList.add("clip-active");
+
+  if (t >= 1) {
+    firstdragclip.style.transform = "translatey(" + -500 + "px)";
+    dragtittleclip.style.transform = "translatey(" + 12000 + "px)";
+    opacityDiv.style.display = "none";
+    link1clip.style.display = "none";
+    link2clip.style.display = "none";
+  }
+
+  if (t == 0) {
+    document.querySelectorAll(".fass-clip")[0].textContent = "1/7";
+    document.querySelectorAll(".fass-clip")[1].textContent = "1/7";
+    setindc();
+    clip_indc[0].classList.add("active-clip");
+    firstdragclip.style.transform = "translatey(" + 0 + "px)";
+    dragtittleclip.style.transform = "translatey(" + 0 + "px)";
+    opacityDiv.style.display = "block";
+    setTimeout(myGreetingclip, 1000);
+    setTimeout(myGreetingclip2, 1500);
+  }
+
+  if (t == 1) {
+    document.querySelectorAll(".fass-clip")[0].textContent = "2/7";
+    document.querySelectorAll(".fass-clip")[1].textContent = "2/7";
+    setindc();
+    clip_indc[1].classList.add("active-clip");
+  }
+
+  if (t == 2) {
+    document.querySelectorAll(".fass-clip")[0].textContent = "3/7";
+    document.querySelectorAll(".fass-clip")[1].textContent = "3/7";
+    setindc();
+    clip_indc[2].classList.add("active-clip");
+  }
+
+  if (t == 3) {
+    document.querySelectorAll(".fass-clip")[0].textContent = "4/7";
+    document.querySelectorAll(".fass-clip")[1].textContent = "4/7";
+    setindc();
+    clip_indc[3].classList.add("active-clip");
+  }
+
+  if (t == 4) {
+    document.querySelectorAll(".fass-clip")[0].textContent = "5/7";
+    document.querySelectorAll(".fass-clip")[1].textContent = "5/7";
+    setindc();
+    clip_indc[4].classList.add("active-clip");
+  }
+
+  if (t == 5) {
+    document.querySelectorAll(".fass-clip")[0].textContent = "6/7";
+    document.querySelectorAll(".fass-clip")[1].textContent = "6/7";
+    setindc();
+    clip_indc[5].classList.add("active-clip");
+    firstdragclip.style.transform = "translatey(" + 0 + "px)";
+    dragtittleclip.style.transform = "translatey(" + 0 + "px)";
+    opacityDiv.style.display = "block";
+    setTimeout(myGreetingclip, 1000);
+    setTimeout(myGreetingclip2, 1500);
+  }
+
+  if (t == 6) {
+    document.querySelectorAll(".fass-clip")[0].textContent = "7/7";
+    document.querySelectorAll(".fass-clip")[1].textContent = "7/7";
+    setindc();
+    clip_indc[6].classList.add("active-clip");
+  }
+}
+
+// function pilot backword clip/////// /// testmonial sliding///////////
+
+function indreset() {
+  let setIndc = document.querySelectorAll(".testmon-ind");
+
+  for (let i = 0; i < setIndc.length; i++) {
+    setIndc[i].classList.remove("ind-active");
+  }
+}
+function s_opac() {
+  let slidSet = document.querySelectorAll(".testmon-slider");
+  for (let i = 0; i < slidSet.length; i++) {
+    slidSet[i].classList.remove(".slider-opac");
+  }
+}
+
+document.querySelector(".testmon-slider1").classList.add("slider-opac");
+
+function back_position() {
+  let scr = window.scrollY / 1.5;
+
+  if (scr >= 1700) {
+    scr = 1700;
+  }
+
+  document.querySelector(".testmon-dad").style.backgroundPosition = "50%" + scr + "px";
+}
+
+function slidetestm(b) {
+  scrollamount = 100;
+
+  maxscroll = 400;
+
+  current = (current - scrollamount) * 1;
+
+  if (current <= -maxscroll) {
+    indreset();
+
+    document.querySelector(".testmon-ind1").classList.add("ind-active");
+
+    current = 0;
+  }
+
+  if (current == 0 || b == 1) {
     current = 0;
 
-    present.style.marginLeft = current + "%";
+    indreset();
 
-    document.querySelectorAll(".indector-css")[0].classList.add("active");
-    document.querySelectorAll(".fass")[0].textContent = "1/10";
-    document.querySelectorAll(".fass")[1].textContent = "1/10";
-    image_title.textContent = "ضلفه :اكلريليك  اللون:ابيض";
-    firstdrag.style.transform = "translatey(" + 0 + "px)";
-    dragtittle.style.transform = "translatey(" + 0 + "px)";
-    setTimeout(myGreeting, 1000);
-    setTimeout(myGreeting2, 1500);
+    document.querySelector(".testmon-ind1").classList.add("ind-active");
+
+    s_opac();
+
+    document.querySelector(".testmon-slider1").classList.add("slider-opac");
+
+    setTimeout(function () {
+      document.querySelector(".testmon-slider1").style.left = "0";
+    }, 700);
+
+    setTimeout(function () {
+      document.querySelector(".testmon-slider2").style.left = "-100%";
+    }, 400);
+
+    setTimeout(function () {
+      document.querySelector(".testmon-slider2").style.left = "100%";
+    }, 900);
+
+    setTimeout(function () {
+      document.querySelector(".testmon-slider3").style.left = "-100%";
+    }, 200);
+
+    setTimeout(function () {
+      document.querySelector(".testmon-slider3").style.left = "200%";
+    }, 500);
+
+    setTimeout(function () {
+      document.querySelector(".testmon-slider4").style.left = "-100%";
+    }, 200);
+
+    setTimeout(function () {
+      document.querySelector(".testmon-slider4").style.left = "300%";
+    }, 1000);
   }
 
-  if (n == 2) {
+  if (current == -100 || b == 2) {
     current = -100;
 
-    present.style.marginLeft = current + "%";
+    indreset();
 
-    document.querySelectorAll(".indector-css")[1].classList.add("active");
-    document.querySelectorAll(".fass")[0].textContent = "2/10";
-    document.querySelectorAll(".fass")[1].textContent = "2/10";
-    image_title.textContent = "ضلفه :اكلريليك  اللون:كافيه وبيج";
+    document.querySelector(".testmon-ind2").classList.add("ind-active");
+
+    s_opac();
+
+    document.querySelector(".testmon-slider2").classList.add("slider-opac");
+
+    setTimeout(function () {
+      document.querySelector(".testmon-slider1").style.left = "100%";
+    }, 400);
+
+    setTimeout(function () {
+      document.querySelector(".testmon-slider2").style.left = "0";
+    }, 900);
+
+    setTimeout(function () {
+      document.querySelector(".testmon-slider3").style.left = "200%";
+    }, 500);
+
+    setTimeout(function () {
+      document.querySelector(".testmon-slider4").style.left = "300%";
+    }, 500);
   }
 
-  if (n == 3) {
+  if (current == -200 || b == 3) {
+    indreset();
+
     current = -200;
-    present.style.marginLeft = current + "%";
-    document.querySelectorAll(".fass")[0].textContent = "3/10";
-    document.querySelectorAll(".fass")[1].textContent = "3/10";
-    image_title.textContent = "ضلفه :دبل المونيوم اللون:سيلفر وتركواز";
+
+    document.querySelector(".testmon-ind3").classList.add("ind-active");
+
+    s_opac();
+
+    document.querySelector(".testmon-slider3").classList.add("slider-opac");
+
+    setTimeout(function () {
+      document.querySelector(".testmon-slider2").style.left = "200%";
+    }, 800);
+
+    setTimeout(function () {
+      document.querySelector(".testmon-slider2").style.left = "-200%";
+    }, 400);
+
+    setTimeout(function () {
+      document.querySelector(".testmon-slider3").style.left = "0";
+    }, 600);
   }
 
-  if (n == 4) {
+  if (current <= -300 || b == 4) {
+    indreset();
     current = -300;
-    present.style.marginLeft = current + "%";
-    document.querySelectorAll(".fass")[0].textContent = "4/10";
-    document.querySelectorAll(".fass")[1].textContent = "4/10";
-    image_title.textContent = "ضلفه :اكلريليك  اللون:ابيض وردي";
+
+    document.querySelector(".testmon-ind4").classList.add("ind-active");
+
+    s_opac();
+
+    document.querySelector(".testmon-slider4").classList.add("slider-opac");
+
+    setTimeout(function () {
+      document.querySelector(".testmon-slider1").style.left = "100%";
+      document.querySelector(".testmon-slider2").style.left = "200%";
+      document.querySelector(".testmon-slider3").style.left = "300%";
+    }, 400);
+
+    setTimeout(function () {
+      document.querySelector(".testmon-slider4").style.left = "0";
+    }, 700);
   }
 
-  if (n == 5) {
-    current = -400;
-    present.style.marginLeft = current + "%";
-    document.querySelectorAll(".fass")[0].textContent = "5/10";
-    document.querySelectorAll(".fass")[1].textContent = "5/10";
-    image_title.textContent = "ضلفه :اكلريليك  اللون:ازرق ازورين ";
-  }
+  document.querySelector(".js-sliding").classList.add("t-active");
 
-  if (n == 6) {
-    current = -500;
-    present.style.marginLeft = current + "%";
-    document.querySelectorAll(".fass")[0].textContent = "6/10";
-    document.querySelectorAll(".fass")[1].textContent = "6/10";
-    image_title.textContent = "ضلفه :اكلريليك  اللون:احمر غامق";
-  }
+  setTimeout(function () {
+    document.querySelector(".js-sliding").classList.remove("t-active");
+  }, 1600);
 
-  if (n == 7) {
-    current = -600;
-    present.style.marginLeft = current + "%";
-    document.querySelectorAll(".fass")[0].textContent = "7/10";
-    document.querySelectorAll(".fass")[1].textContent = "7/10";
-    image_title.textContent = "ضلفه :اكلريليك  اللون:بينك";
-  }
-
-  if (n == 8) {
-    current = -700;
-    present.style.marginLeft = current + "%";
-    document.querySelectorAll(".fass")[0].textContent = "8/10";
-    document.querySelectorAll(".fass")[1].textContent = "8/10";
-    image_title.textContent = "ضلفه :دبل : المونيوم  اللون:ابيض و بنفسج غامق";
-  }
-
-  if (n == 9) {
-    current = -800;
-    present.style.marginLeft = current + "%";
-    document.querySelectorAll(".fass")[0].textContent = "9/10";
-    document.querySelectorAll(".fass")[1].textContent = "9/10";
-    image_title.textContent = "ضلفه :اكلريليك  اللون:اسود";
-    firstdrag.style.transform = "translatey(" + 0 + "px)";
-    dragtittle.style.transform = "translatey(" + 0 + "px)";
-    setTimeout(myGreeting, 1000);
-    setTimeout(myGreeting2, 1500);
-  }
-
-  if (n == 10) {
-    current = -900;
-    present.style.marginLeft = current + "%";
-    document.querySelectorAll(".fass")[0].textContent = "10/10";
-    document.querySelectorAll(".fass")[1].textContent = "10/10";
-    image_title.textContent = "ضلفه :اكلريليك  اللون:بيج و عسلي";
-  }
+  setTimeout(function () {
+    document.querySelector(".js-sliding").style.left = `${current}%`;
+  }, 700);
 }
 
-// pilotforward////
-
-let right_arrow = document.querySelector(".right-arrow-transform");
-
-function pilotforward() {
-  current = (scrollamount - current) * -1;
-
-  if (current < -maxscroll) {
-    current = 0;
-  }
-
-  if (current <= -100) {
-    firstdrag.style.transform = "translatey(" + -500 + "px)";
-    dragtittle.style.transform = "translatey(" + 4000 + "px)";
-    link1.style.display = "none";
-    link2.style.display = "none";
-  }
-
-  if (current == 0) {
-    set();
-    document.querySelectorAll(".indector-css")[0].classList.add("active");
-    document.querySelectorAll(".fass")[0].textContent = "1/10";
-    document.querySelectorAll(".fass")[1].textContent = "1/10";
-    image_title.textContent = "ضلفه :اكلريليك  اللون:ابيض";
-    firstdrag.style.transform = "translatey(" + 0 + "px)";
-    dragtittle.style.transform = "translatey(" + 0 + "px)";
-    setTimeout(myGreeting, 1000);
-    setTimeout(myGreeting2, 1500);
-  }
-  if (current == -100) {
-    set();
-    document.querySelectorAll(".indector-css")[1].classList.add("active");
-    document.querySelectorAll(".fass")[0].textContent = "2/10";
-    document.querySelectorAll(".fass")[1].textContent = "2/10";
-    image_title.textContent = "ضلفه :اكلريليك  اللون:كافيه وبيج";
-  }
-
-  if (current == -200) {
-    set();
-    document.querySelectorAll(".indector-css")[2].classList.add("active");
-    document.querySelectorAll(".fass")[0].textContent = "3/10";
-    document.querySelectorAll(".fass")[1].textContent = "3/10";
-    image_title.textContent = "ضلفه :دبل المونيوم اللون:سيلفر وتركواز";
-  }
-  if (current == -300) {
-    set();
-    document.querySelectorAll(".indector-css")[3].classList.add("active");
-    document.querySelectorAll(".fass")[0].textContent = "4/10";
-    document.querySelectorAll(".fass")[1].textContent = "4/10";
-    image_title.textContent = "ضلفه :اكلريليك  اللون:ابيض وردي";
-  }
-  if (current == -400) {
-    set();
-    document.querySelectorAll(".indector-css")[4].classList.add("active");
-    document.querySelectorAll(".fass")[0].textContent = "5/10";
-    document.querySelectorAll(".fass")[1].textContent = "5/10";
-    image_title.textContent = "ضلفه :اكلريليك  اللون:ازرق ازورين ";
-  }
-
-  if (current == -500) {
-    set();
-    document.querySelectorAll(".indector-css")[5].classList.add("active");
-    document.querySelectorAll(".fass")[0].textContent = "6/10";
-    document.querySelectorAll(".fass")[1].textContent = "6/10";
-    image_title.textContent = "ضلفه :اكلريليك  اللون:احمر غامق";
-  }
-  if (current == -600) {
-    set();
-    document.querySelectorAll(".indector-css")[6].classList.add("active");
-    document.querySelectorAll(".fass")[0].textContent = "7/10";
-    document.querySelectorAll(".fass")[1].textContent = "7/10";
-    image_title.textContent = "ضلفه :اكلريليك  اللون:بينك";
-  }
-  if (current == -700) {
-    set();
-    document.querySelectorAll(".indector-css")[7].classList.add("active");
-    document.querySelectorAll(".fass")[0].textContent = "8/10";
-    document.querySelectorAll(".fass")[1].textContent = "8/10";
-    image_title.textContent = "ضلفه :دبل : المونيوم  اللون:ابيض و بنفسج غامق";
-  }
-  if (current == -800) {
-    set();
-    document.querySelectorAll(".indector-css")[8].classList.add("active");
-    document.querySelectorAll(".fass")[0].textContent = "9/10";
-    document.querySelectorAll(".fass")[1].textContent = "9/10";
-    image_title.textContent = "ضلفه :اكلريليك  اللون:اسود";
-    firstdrag.style.transform = "translatey(" + 0 + "px)";
-    dragtittle.style.transform = "translatey(" + 0 + "px)";
-    setTimeout(myGreeting, 1000);
-    setTimeout(myGreeting2, 1500);
-  }
-  if (current == -900) {
-    set();
-    document.querySelectorAll(".indector-css")[9].classList.add("active");
-    document.querySelectorAll(".fass")[0].textContent = "10/10";
-    document.querySelectorAll(".fass")[1].textContent = "10/10";
-    image_title.textContent = "ضلفه :اكلريليك  اللون:بيج و عسلي";
-  }
-  present.style.marginLeft = current + "%";
+const myintervalfour = setInterval(mytimerfour, 12000);
+function mytimerfour() {
+  slidetestm();
 }
 
-const myintervaltow = setInterval(mytimertow, 9000);
-function mytimertow() {
-  pilotforward();
-  right_arrow.checked = true;
+// function pilot backword clip/////// /// testmonial sliding///////////
+
+// resizee///
+function go() {
+  document.querySelector(".present-clip").style.height = window.innerHeight - 25 + "px";
+
+  wid = document.querySelector(".testmon-slide").clientWidth;
+  for (let i = 0; i < testmSlider.length; i++) {
+    testmSlider[i].style.width = wid + "px";
+  }
+  document.querySelector(".js-sliding").style.width = wid * 4 + "px";
+
+  //   if (current >= 0) return $(".js-sliding").css("left", `${0}px`);
 }
-
-/////pilotforward///// ///pilotbackward///
-
-let left_arrow = document.querySelector(".left-arrow-transform");
-
-function pilotbackward(v) {
-  current = (scrollamount + current) * v;
-  if (current > 0) {
-    current = -maxscroll;
-  }
-
-  if (current >= -100) {
-    firstdrag.style.transform = "translatey(" + -500 + "px)";
-    dragtittle.style.transform = "translatey(" + 4000 + "px)";
-    link1.style.display = "none";
-    link2.style.display = "none";
-  }
-
-  if (current == 0) {
-    set();
-    document.querySelectorAll(".indector-css")[0].classList.add("active");
-    document.querySelectorAll(".fass")[0].textContent = "1/10";
-    document.querySelectorAll(".fass")[1].textContent = "1/10";
-    image_title.textContent = "ضلفه :اكلريليك  اللون:ابيض";
-    firstdrag.style.transform = "translatey(" + 0 + "px)";
-    dragtittle.style.transform = "translatey(" + 0 + "px)";
-    setTimeout(myGreeting, 1000);
-    setTimeout(myGreeting2, 1500);
-  }
-  if (current == -100) {
-    set();
-    document.querySelectorAll(".indector-css")[1].classList.add("active");
-    document.querySelectorAll(".fass")[0].textContent = "2/10";
-    document.querySelectorAll(".fass")[1].textContent = "2/10";
-    image_title.textContent = "ضلفه :اكلريليك  اللون:كافيه وبيج";
-  }
-  if (current == -200) {
-    set();
-    document.querySelectorAll(".indector-css")[2].classList.add("active");
-    document.querySelectorAll(".fass")[0].textContent = "3/10";
-    document.querySelectorAll(".fass")[1].textContent = "3/10";
-    image_title.textContent = "ضلفه :دبل المونيوم اللون:سيلفر وتركواز";
-  }
-  if (current == -300) {
-    set();
-    document.querySelectorAll(".indector-css")[3].classList.add("active");
-    document.querySelectorAll(".fass")[0].textContent = "4/10";
-    document.querySelectorAll(".fass")[1].textContent = "4/10";
-    image_title.textContent = "ضلفه :اكلريليك  اللون:ابيض وردي";
-  }
-  if (current == -400) {
-    set();
-    document.querySelectorAll(".indector-css")[4].classList.add("active");
-    document.querySelectorAll(".fass")[0].textContent = "5/10";
-    document.querySelectorAll(".fass")[1].textContent = "5/10";
-    image_title.textContent = "ضلفه :اكلريليك  اللون:ازرق ازورين ";
-  }
-
-  if (current == -500) {
-    set();
-    document.querySelectorAll(".indector-css")[5].classList.add("active");
-    document.querySelectorAll(".fass")[0].textContent = "6/10";
-    document.querySelectorAll(".fass")[1].textContent = "6/10";
-    image_title.textContent = "ضلفه :اكلريليك  اللون:احمر غامق";
-  }
-  if (current == -600) {
-    set();
-    document.querySelectorAll(".indector-css")[6].classList.add("active");
-    document.querySelectorAll(".fass")[0].textContent = "7/10";
-    document.querySelectorAll(".fass")[1].textContent = "7/10";
-    image_title.textContent = "ضلفه :اكلريليك  اللون:بينك";
-  }
-  if (current == -700) {
-    set();
-    document.querySelectorAll(".indector-css")[7].classList.add("active");
-    document.querySelectorAll(".fass")[0].textContent = "8/10";
-    document.querySelectorAll(".fass")[1].textContent = "8/10";
-    image_title.textContent = "ضلفه :دبل : المونيوم  اللون:ابيض و بنفسج غامق";
-  }
-  if (current == -800) {
-    set();
-    document.querySelectorAll(".indector-css")[8].classList.add("active");
-    document.querySelectorAll(".fass")[0].textContent = "9/10";
-    document.querySelectorAll(".fass")[1].textContent = "9/10";
-    image_title.textContent = "ضلفه :اكلريليك  اللون:اسود";
-    firstdrag.style.transform = "translatey(" + 0 + "px)";
-    dragtittle.style.transform = "translatey(" + 0 + "px)";
-    setTimeout(myGreeting, 1000);
-    setTimeout(myGreeting2, 1500);
-  }
-  if (current == -900) {
-    set();
-    document.querySelectorAll(".indector-css")[9].classList.add("active");
-    document.querySelectorAll(".fass")[0].textContent = "10/10";
-    document.querySelectorAll(".fass")[1].textContent = "10/10";
-    image_title.textContent = "ضلفه :اكلريليك  اللون:بيج و عسلي";
-  }
-
-  present.style.marginLeft = current + "%";
-}
-// pilotbackward/// transform slider//////////////////////////////////// arrow
-// hover////
-document.querySelector(".left-arrow-transform").addEventListener("mouseover", function () {
-  document.querySelector(".fass").style.opacity = "1";
-});
-document.querySelector(".left-arrow-transform").addEventListener("mouseout", function () {
-  document.querySelector(".fass").style.opacity = "0";
-});
-
-document.querySelector(".right-arrow-transform").addEventListener("mouseover", function () {
-  document.querySelectorAll(".fass")[1].style.opacity = "1";
-});
-document.querySelector(".right-arrow-transform").addEventListener("mouseout", function () {
-  document.querySelectorAll(".fass")[1].style.opacity = "0";
-});
-// arrow hover//// ////////////////// light box//////////////
-// window.addEventListener("scroll" , (event)=> {   var scroll = this.scrollY;
-// })
-
-function call(n) {
-  document.body.style.overflow = "hidden";
-
-  let slidingHold = document.createElement("div");
-  slidingHold.classList.add("sliding-section-hold");
-
-  slidingHold.addEventListener("click", (e) => {
-    if (e.target !== e.currentTarget) return;
-
-    closeElement();
-  });
-
-  let newElment = document.createElement("div");
-  newElment.classList.add("backsliding");
-
-  let closeelment = document.createElement("div");
-  closeelment.classList.add("closse");
-
-  let secondElment = document.createElement("div");
-  secondElment.classList.add("sliding-section");
-  slidingHold.appendChild(closeelment);
-  slidingHold.appendChild(secondElment);
-
-  let mainDiv = document.querySelector("main");
-
-  mainDiv.insertBefore(slidingHold, mainDiv.childNodes[0]);
-  mainDiv.insertBefore(newElment, mainDiv.childNodes[0]);
-
-  document.addEventListener("keydown", move);
-
-  // adress div and number
-
-  let pnumber = document.createElement("div");
-  pnumber.classList.add("image-n");
-  slidingHold.insertBefore(pnumber, slidingHold.childNodes[0]);
-
-  let node = document.createTextNode(n + 1 + " off 66");
-  pnumber.appendChild(node);
-
-  let clear = document.createElement("div");
-  clear.classList.add("adress-image");
-  slidingHold.insertBefore(clear, slidingHold.childNodes[0]);
-
-  let frame = document.querySelectorAll(".picone")[n];
-  let h1 = frame.querySelector(".adress-image").textContent;
-  let text = document.createTextNode(h1);
-  clear.appendChild(text);
-
-  // adress div and number scroll amount//
-  let scrollBox = document.querySelector(".sliding-section-hold");
-  scrollBox.style.top = scrollY + "px";
-  //scroll amount//
-
-  let leftArrow = document.createElement("div");
-  leftArrow.classList.add("left-arrow");
-  leftArrow.id = "left-arrow";
-  secondElment.appendChild(leftArrow);
-
-  let leftArrow_sign = document.createElement("i");
-  leftArrow_sign.classList.add("fas", "fa-caret-left");
-  leftArrow.appendChild(leftArrow_sign);
-
-  let rightArrow = document.createElement("div");
-  rightArrow.classList.add("right-arrow");
-  rightArrow.id = "right-arrow";
-  secondElment.appendChild(rightArrow);
-
-  let rightArrow_sign = document.createElement("i");
-  rightArrow_sign.classList.add("fas", "fa-caret-right");
-  rightArrow.appendChild(rightArrow_sign);
-
-  let btn = document.createElement("button");
-  btn.classList.add("slider-close");
-  slidingHold.appendChild(btn);
-
-  let btn_icon = document.createElement("div");
-  btn_icon.classList.add("slider-close-icon");
-  btn.appendChild(btn_icon);
-  btn_icon.onclick = function () {
-    closeElement();
-  };
-
-  let btn_span = document.createElement("span");
-  btn_span.classList.add("slider-close-icon-before");
-  btn_icon.appendChild(btn_span);
-
-  let btn_spann = document.createElement("span");
-  btn_spann.classList.add("slider-close-icon-after");
-  btn_icon.appendChild(btn_spann);
-
-  let slider_content = document.createElement("div");
-  slider_content.classList.add("slidingimag");
-  secondElment.appendChild(slider_content);
-
-  // image
-  let h = window.innerHeight;
-  let images = document.createElement("img");
-  images.classList.add("sliderimage");
-  slider_content.appendChild(images);
-  images.src = "image" + [n] + ".webp";
-  images.style.maxHeight = h - 100 + "px";
-
-  images.onclick = () => {
-    if (n >= 65) {
-      n = 0;
-      console.log(n);
-      secondElment.removeChild(slider_content);
-      pnumber.removeChild(node);
-      secondElment.appendChild(slider_content);
-      n--;
-
-      node = document.createTextNode(n + 1 + " off 66");
-      pnumber.appendChild(node);
-      images.src = "image" + [n] + ".webp";
-    }
-
-    secondElment.removeChild(slider_content);
-    pnumber.removeChild(node);
-    clear.removeChild(text);
-
-    n++;
-
-    secondElment.appendChild(slider_content);
-    node = document.createTextNode(n + 1 + " off 66");
-    pnumber.appendChild(node);
-
-    // slidingHold.insertBefore(clear,slidingHold.childNodes[0]);
-
-    frame = document.querySelectorAll(".picone")[n];
-    h1 = frame.querySelector(".adress-image").textContent;
-    text = document.createTextNode(h1);
-    clear.appendChild(text);
-
-    images.src = "image" + [n] + ".webp";
-
-    console.log(n);
-  };
-
-  // image prev
-  leftArrow.onclick = function () {
-    prev();
-  };
-
-  function prev() {
-    if (n <= 0) {
-      n = 65;
-      console.log(n);
-      secondElment.removeChild(slider_content);
-      pnumber.removeChild(node);
-      secondElment.appendChild(slider_content);
-      n++;
-
-      node = document.createTextNode(n + 1 + " off 66");
-      pnumber.appendChild(node);
-      images.src = "image" + [n] + ".webp";
-    }
-
-    secondElment.removeChild(slider_content);
-    pnumber.removeChild(node);
-    clear.removeChild(text);
-
-    n--;
-
-    secondElment.appendChild(slider_content);
-    node = document.createTextNode(n + 1 + " off 66");
-    pnumber.appendChild(node);
-
-    frame = document.querySelectorAll(".picone")[n];
-    h1 = frame.querySelector(".adress-image").textContent;
-    text = document.createTextNode(h1);
-    clear.appendChild(text);
-
-    images.src = "image" + [n] + ".webp";
-  }
-  //prev forward
-  rightArrow.onclick = function () {
-    forward();
-  };
-  function forward() {
-    if (n >= 65) {
-      n = 0;
-      console.log(n);
-      secondElment.removeChild(slider_content);
-      pnumber.removeChild(node);
-      secondElment.appendChild(slider_content);
-      n--;
-
-      node = document.createTextNode(n + 1 + " off 66");
-      pnumber.appendChild(node);
-      images.src = "image" + [n] + ".webp";
-    }
-
-    secondElment.removeChild(slider_content);
-    pnumber.removeChild(node);
-    clear.removeChild(text);
-
-    n++;
-
-    secondElment.appendChild(slider_content);
-    node = document.createTextNode(n + 1 + " off 66");
-    pnumber.appendChild(node);
-
-    frame = document.querySelectorAll(".picone")[n];
-    h1 = frame.querySelector(".adress-image").textContent;
-    text = document.createTextNode(h1);
-    clear.appendChild(text);
-
-    images.src = "image" + [n] + ".webp";
-  }
-  //forward
-
-  function move(event) {
-    if (event.key == "ArrowRight") {
-      forward();
-    }
-
-    if (event.key == "ArrowLeft") {
-      prev();
-    }
-
-    if (event.key == "Escape") {
-      closeElement();
-    }
-  }
-}
-
-function closeElement() {
-  let mainDiv = document.querySelector("main");
-  mainDiv.removeChild(mainDiv.childNodes[0]);
-  mainDiv.removeChild(mainDiv.childNodes[0]);
-  document.body.style.overflow = "visible";
-}
+// resizee///
