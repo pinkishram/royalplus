@@ -20,6 +20,30 @@ body {
   scroll-behavior: smooth;
   transition: 2s ease-out;
 }
+/* load logo */
+.load-logo {
+  width: 100%;
+  min-height: 100%;
+  position: fixed;
+  background-color: rgba(255 255 255 / 90%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.load-logo img {
+  animation: logo 0.5s forwards;
+  transition: transform 0.5s ease-in-out;
+  transform: scale(0.4);
+}
+@keyframes logo {
+  100% {
+    transform: scale(0.6);
+  }
+}
+
+/* load logo */
 
 /* present item clip///////// */
 
@@ -108,9 +132,9 @@ body {
   padding: 33px 20px;
 }
 
-.left-arrow-clip:hover ~ #left-arrow-clip .fass {
+/* .left-arrow-clip:hover ~ .left-arrow-clip .fass {
   opacity: 1;
-}
+} */
 
 .fass-clip {
   position: absolute;

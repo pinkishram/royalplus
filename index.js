@@ -1,3 +1,4 @@
+const loadLogo = document.querySelector(".load-logo");
 const bodyhide = document.querySelector(".body-hide");
 const header_icon = document.querySelector(".icon-hover");
 const margin = document.querySelector(".genral-wrap");
@@ -38,6 +39,10 @@ const link2clip = document.querySelector(".link2-clip");
 
 const testmSlider = document.querySelectorAll(".testmon-slider");
 
+const rightArrow = document.querySelector(".right-arrow-clip");
+const leftArrow = document.querySelector(".left-arrow-clip");
+const fassClip = document.querySelectorAll(".fass-clip");
+
 const foot = document.querySelector(".footer-layout");
 const assurance = document.querySelector(".work-wrap");
 const contact = document.querySelector(".cont-form");
@@ -65,6 +70,7 @@ window.onload = function () {
   dragtittleclip.style.transform = "translatey(" + 0 + "px)";
   const myTimeoutclip = setTimeout(myGreetingclip, 2000);
   const myTimeout2clip = setTimeout(myGreetingclip2, 3000);
+  loadLogo.style.display = "none";
 };
 
 function myGreetingclip() {
@@ -75,20 +81,38 @@ function myGreetingclip2() {
 }
 
 // arrow hover////
-document.querySelector(".left-arrow-clip").addEventListener("mouseover", function () {
-  document.querySelector(".fass-clip").style.opacity = "1";
-});
-document.querySelector(".left-arrow-clip").addEventListener("mouseout", function () {
-  document.querySelector(".fass-clip").style.opacity = "0";
-});
-document.querySelector(".right-arrow-clip").addEventListener("mouseover", function () {
-  if (windowWidth < 420) {
-    document.querySelectorAll(".fass-clip")[1].style.opacity = "0";
+leftArrow.addEventListener("mouseover", function () {
+  function mediaquiry(m) {
+    if (m.matches) {
+      fassClip[0].style.opacity = "0";
+    } else {
+      fassClip[0].style.opacity = "1";
+    }
   }
-  document.querySelectorAll(".fass-clip")[1].style.opacity = "1";
+  const mediadata = window.matchMedia("(max-width: 825px)");
+  mediaquiry(mediadata);
+  mediadata.addListener(mediaquiry);
 });
-document.querySelector(".right-arrow-clip").addEventListener("mouseout", function () {
-  document.querySelectorAll(".fass-clip")[1].style.opacity = "0";
+
+leftArrow.addEventListener("mouseout", function () {
+  fassClip[0].style.opacity = "0";
+});
+
+rightArrow.addEventListener("mouseover", function () {
+  function mediaquiry(m) {
+    if (m.matches) {
+      fassClip[1].style.opacity = "0";
+    } else {
+      fassClip[1].style.opacity = "1";
+    }
+  }
+  const mediadata = window.matchMedia("(max-width: 825px)");
+  mediaquiry(mediadata);
+  mediadata.addListener(mediaquiry);
+});
+
+rightArrow.addEventListener("mouseout", function () {
+  fassClip[1].style.opacity = "0";
 });
 
 // arrow hover//// slider for the body////////
