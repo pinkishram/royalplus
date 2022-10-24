@@ -1,3 +1,5 @@
+const loadLogo = document.querySelector(".load-logo");
+
 let label = document.querySelectorAll(".indector-css");
 let present = document.querySelector(".present-items");
 const image_title = document.querySelector(".i-t-one");
@@ -51,7 +53,7 @@ window.onpageshow = function () {
   setTimeout(myGreeting, 2000);
   setTimeout(myGreeting2, 3000);
 
-  // document.querySelector(".item100").classList.add("clip-active");
+  loadLogo.style.display = "none";
 };
 
 function myGreeting() {
