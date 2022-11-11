@@ -382,6 +382,7 @@ body {
   display: flex;
   flex-direction: row;
   position: relative;
+  will-change: transform;
 }
 
 .testmon-slider {
