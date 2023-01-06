@@ -925,6 +925,7 @@ body {
 
 .cont-butt {
     outline: 0;
+    border: none;
     background: transparent;
     padding: 0.5rem 1rem;
     background-color: #476675;
